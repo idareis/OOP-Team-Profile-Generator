@@ -11,5 +11,91 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./src/page-template.js");
 
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
+const teamMembers = [];
 
+function promptManager() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "Please enter the manager\'s name: ",
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "Please enter the manager\'s employee ID: ",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Please enter the manager\'s email address: ",
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "Please enter the manager\'s office number: ",
+        },
+    ]).then((answers) => {
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+        teamMembers.push(manager);
+        promptMenu();
+    });
+}
+
+function promptEngineer() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "Please enter the engineer\'s name: ",
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "Please enter the engineer\'s employee ID: ",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Please enter the engineer\'s email address: ",
+        },
+        {
+            type: "input",
+            name: "gitHub",
+            message: "Please enter the engineer\'s github: ",
+        },
+    ]).then((answers) => {
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+        teamMembers.push(engineer);
+        promptMenu();
+    });
+}
+
+function promptIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "Please enter the intern\'s name: ",
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "Please enter the intern\'s employee ID: ",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Please enter the intern\'s email address: ",
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "Please enter the intern\'s school: ",
+        },
+    ]).then((answers) => {
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        teamMembers.push(intern);
+        promptMenu();
+    });
+}
