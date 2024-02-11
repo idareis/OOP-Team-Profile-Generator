@@ -1,5 +1,5 @@
 {
-  "name": "starter",
+  "name": "oop-team-profile-generator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,13 +7,13 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.2.14",
+    "inquirer": "^7.3.3",
     "jest": "^29.7.0"
   }
 }
