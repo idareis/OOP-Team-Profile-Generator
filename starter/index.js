@@ -62,7 +62,7 @@ function promptEngineer() {
         {
             type: "input",
             name: "gitHub",
-            message: "Please enter the engineer\'s github: ",
+            message: "Please enter the engineer\'s Github: ",
         },
     ]).then((answers) => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
@@ -99,3 +99,37 @@ function promptIntern() {
         promptMenu();
     });
 }
+
+function promptMenu() {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "menuChoice",
+            message: "What would you like to do?",
+            choices: ["Add an engineer", "Add an intern", "Finish building the team"],
+        },
+    ]).then((answers) => {
+        switch (answers.menuChoice) {
+            case "Add an engineer":
+                promptEngineer();
+                break;
+            case "Add an intern":
+                promptIntern();
+                break;
+            case "Finish building the team":
+                generateHTML();
+                break;
+            default:
+                //Will handle an unexpected choice
+                break;
+        }
+    });
+}
+
+function generateHTML() {
+    const html = render(teamMembers);
+    fs.writeFileSync(outputPath, html);
+    console.log(`Team HTML generated at ${outputPath}`);
+}
+
+promptManager();
