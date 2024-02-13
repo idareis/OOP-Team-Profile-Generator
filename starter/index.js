@@ -13,6 +13,7 @@ const render = require("./src/page-template.js");
 
 const teamMembers = [];
 
+//Prompts for each employee
 function promptManager() {
     inquirer.prompt([
         {
@@ -100,6 +101,7 @@ function promptIntern() {
     });
 }
 
+//Function to prompt a menu with questions
 function promptMenu() {
     inquirer.prompt([
         {
@@ -126,6 +128,7 @@ function promptMenu() {
     });
 }
 
+// Function to generate an HTML file with all the prompts
 function generateHTML() {
     const html = render(teamMembers);
     fs.writeFileSync(outputPath, html);
